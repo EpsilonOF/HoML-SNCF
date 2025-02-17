@@ -1,0 +1,2 @@
+Meilleurs paramètres : {'pca__n_components': 5, 'regressor__max_depth': 20, 'regressor__n_estimators': 200}
+Meilleur score R² : 0.7278386739906383
