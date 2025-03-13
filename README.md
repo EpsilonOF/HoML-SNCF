@@ -1,73 +1,71 @@
-# Analyse de la régularité des trains SNCF
+# SNCF train regularity analysis
 
-Ce projet vise à prédire différentes métriques liées aux retards des trains SNCF en utilisant des techniques de machine learning. L'analyse se concentre notamment sur la prédiction du nombre de trains en retard et du retard moyen en fonction de différentes variables comme le mois, les gares de départ et d'arrivée.
+This project aims to predict various metrics related to SNCF train delays using machine learning techniques. In particular, the analysis focuses on predicting the number of late trains and the average delay as a function of different variables such as month, departure and arrival stations.## Data
 
-## Données
+The data used in this project come from two main sources:
+- [Kaggle dataset on monthly TGV regularity](https://www.kaggle.com/datasets/elliotx1000/french-railway-monthly-tgv-regularity)
+- [SNCF data on monthly TGV regularity (AQST)](https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/information/)
 
-Les données utilisées dans ce projet proviennent de deux sources principales :
-- [Dataset Kaggle sur la régularité mensuelle des TGV](https://www.kaggle.com/datasets/elliotx1000/french-railway-monthly-tgv-regularity)
-- [Données SNCF sur la régularité mensuelle des TGV (AQST)](https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/information/)
+This project uses the CSV file in the Export section of the second link.
 
-Ce projet utilise le fichier CSV dans la section Export du second lien.
+## Prerequisites
 
-## Prérequis
-
-Le projet requiert les bibliothèques Python suivantes :
+The project requires the following Python libraries:
 - pandas
 - numpy
 - scikit-learn
 - matplotlib
 - pathlib
 
-Vous pouvez installer ces dépendances avec la commande :
+You can install these dependencies with the command :
 ```
 pip install -r requirements.txt
 ```
 
-## Structure du projet
+## Project structure
 
 ```
 .
-├── project.py          # Script principal
-├── data/               # Dossier contenant les données
-│   ├── regularite-mensuelle-tgv-aqst.csv    # Données brutes
-│   ├── sncf_data.csv                        # Données nettoyées
-│   └── correspondance_gare.csv              # Correspondance indices-gares
-├── meilleur_resultat.txt   # Résultats optimisés
-└── README.md           # Ce fichier
+├── project.py          # Main script
+├── data/               # Folder containing data
+│   ├── regularite-mensuelle-tgv-aqst.csv    # Raw data
+│   ├── sncf_data.csv                        # Clean data
+│   └── correspondance_gare.csv              # Index-station correspondence
+├── meilleur_resultat.txt   # Optimized results
+└── README.md           # This file
 ```
 
-## Fonctionnalités
+## Features
 
-Le script réalise plusieurs analyses séquentielles :
+The script performs several sequential analyses:
 
-1. **Prétraitement des données** : Chargement, nettoyage et encodage des variables catégorielles
-2. **Analyse de corrélation** : Identification des variables les plus corrélées aux cibles
-3. **Entraînement de modèles** pour prédire 4 cibles distinctes :
-   - Nombre de trains en retard à l'arrivée
-   - Nombre de trains en retard au départ
-   - Retard moyen de tous les trains au départ
-   - Retard moyen des trains en retard à l'arrivée
-4. **Évaluation des modèles** : Comparaison des performances via validation croisée
-5. **Optimisation d'hyperparamètres** : Recherche des meilleurs paramètres via GridSearchCV
-6. **Visualisation des résultats** : Graphiques comparant prédictions et données réelles
+1. **Data pre-processing**: Loading, cleaning and encoding of categorical variables
+2. **Correlation analysis**: Identification of variables most correlated with targets
+3. **Model training** to predict 4 distinct targets:
+   - Number of trains late arriving
+   - Number of trains delayed on departure
+   - Average delay of all departing trains
+   - Average delay of trains delayed on arrival
+4. **Model evaluation**: Performance comparison via cross-validation
+5. **Hyperparameter optimization**: Search for the best parameters via GridSearchCV
+6. **Results visualization**: Graphs comparing predictions and real data
 
-## Modèles testés
+## Models tested
 
-Plusieurs modèles de régression sont évalués pour chaque cible :
-- Régression linéaire simple
-- Régression polynomiale
+Several regression models are evaluated for each target:
+- Simple linear regression
+- Polynomial regression
 - Ridge Regression
 - Lasso Regression
 - Random Forest
 - Gradient Boosting
 
-## Utilisation
+## Usage
 
-Pour exécuter l'analyse complète, téléchargez le projet et exécutez les cellules une par une, selon la tâche que vous souhaitez réaliser. Le projet suit une ligne directrice au fur et à mesure du notebook, il est donc conseillé de l'exécuter dans l'ordre.
+To run the complete analysis, download the project and run the cells one by one, depending on the task you wish to perform. The project follows a guideline as you go through the notebook, so it's advisable to run it in order.
 
-## Résultats
+## Results
 
-Les meilleures performances ont été obtenues pour la prédiction du nombre de trains en retard à l'arrivée, avec un score R² d'environ 0.73, ce qui indique une bonne capacité prédictive du modèle.
+The best performance was obtained for the prediction of the number of late arriving trains, with an R² score of around 0.73, indicating a good predictive capability of the model.
 
-Le script sauvegarde les meilleurs hyperparamètres trouvés dans un fichier `meilleur_resultat.txt`, consultable dans le dossier `data`.
+The script saves the best hyperparameters found in a `best_result.txt` file, which can be viewed in the `data` folder.
